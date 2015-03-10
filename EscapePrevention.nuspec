@@ -3,7 +3,7 @@
   <metadata>
     <id>EscapePrevention</id>
     <version>$version$</version>
-    <title>Terrarium SDK</title>
+    <title>Escape Prevention</title>
     <authors>Mark Greenway</authors>
     <owners>Mark Greenway</owners>
     <licenseUrl>https://github.com/MarkKGreenway/EscapePrevention/blob/master/LICENSE</licenseUrl>
@@ -13,7 +13,7 @@
     <description>This library is to strip out any characters that would have to be escaped later:</description>
     <releaseNotes></releaseNotes>
     <copyright></copyright>
-    <tags>URL xml escaped</tags>
+    <tags>URL xml escaped escapeprevention</tags>
   </metadata>
   <files>
 	<file src="EscapePrevention\bin\$configuration$\EscapePrevention.dll" target="lib\net40\" />

@@ -23,6 +23,7 @@ TestResult.xml
 ###############
 obj/
 bin/
+Build/
 TestResults/
 packages/
 Tests/obj/Debug
@@ -58,4 +59,5 @@ Tests/obj/Debug
 .DS_Store?
 ehthumbs.db
 Thumbs.db
-*.userS
+*.user
+!NuGet.exe
