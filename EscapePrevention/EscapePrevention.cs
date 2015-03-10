@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EscapePrevention.Overhead;
 
 namespace EscapePrevention
 {
@@ -18,7 +19,8 @@ namespace EscapePrevention
             {
                 return String.Empty;
             }
-            return input;
+            var selector = new EscapeStrategySelector();
+            return selector.SelectStrategy(kind).Escape(input);
         }
     }
 }

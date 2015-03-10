@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EscapeKinds\UrlSpaceRemovalStrategy.cs" />
     <Compile Include="EscapePrevention.cs" />
     <Compile Include="EscapePreventionKind.cs" />
+    <Compile Include="Overhead\EscapeStrategy.cs" />
+    <Compile Include="Overhead\EscapeStrategySelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
