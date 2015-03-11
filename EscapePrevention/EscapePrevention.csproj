@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EscapeKinds\UrlEscapeStrategy.cs" />
     <Compile Include="EscapeKinds\UrlSpaceRemovalStrategy.cs" />
+    <Compile Include="EscapeKinds\UrlSpaceReplacementStrategy.cs" />
     <Compile Include="EscapePrevention.cs" />
     <Compile Include="EscapePreventionKind.cs" />
     <Compile Include="Overhead\EscapeStrategy.cs" />

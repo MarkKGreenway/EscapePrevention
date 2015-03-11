@@ -10,6 +10,7 @@ namespace EscapePrevention.Overhead
             new List<EscapeStrategy>
             {
                 new UrlSpaceRemovalStrategy(),
+                new UrlSpaceReplacementStrategy(),
                    
             };
 
