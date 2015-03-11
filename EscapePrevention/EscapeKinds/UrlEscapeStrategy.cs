@@ -11,9 +11,8 @@ namespace EscapePrevention.EscapeKinds
         private readonly EscapePreventionKind _kind;
         private readonly string _spaceReplacement;
 
-        private const RegexOptions Options = RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.CultureInvariant;
-        private static readonly Regex FullStrip = new Regex("[a-zA-Z0-9]", Options);
-        private static readonly Regex NotFullStrip = new Regex("[a-zA-Z0-9_]", Options);
+        private static readonly Regex FullStrip = new Regex("[a-zA-Z0-9]");
+        private static readonly Regex NotFullStrip = new Regex("[a-zA-Z0-9_]");
         public UrlEscapeStrategy(EscapePreventionKind kind, string spaceReplacement)
         {
             _kind = kind;
