@@ -9,7 +9,7 @@ namespace EscapePrevention
 {
     public class EscapePrevention
     {
-        public static string EscapePrevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval)
+        public static string EscPrevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval)
         {
             if (String.IsNullOrEmpty(input)) return String.Empty;
             if (String.IsNullOrWhiteSpace(input)) return String.Empty;
@@ -19,7 +19,7 @@ namespace EscapePrevention
 
         public string Prevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval)
         {
-            return EscapePrevent(input, kind);
+            return EscPrevent(input, kind);
         }
     }
 }
