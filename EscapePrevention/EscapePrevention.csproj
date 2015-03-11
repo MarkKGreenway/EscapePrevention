@@ -43,6 +43,7 @@
     <Compile Include="EscapeKinds\UrlSpaceRemovalStrategy.cs" />
     <Compile Include="EscapeKinds\UrlSpaceReplacementStrategy.cs" />
     <Compile Include="EscapePrevention.cs" />
+    <Compile Include="EscapePreventionExtension.cs" />
     <Compile Include="EscapePreventionKind.cs" />
     <Compile Include="Overhead\EscapeStrategy.cs" />
     <Compile Include="Overhead\EscapeStrategySelector.cs" />
