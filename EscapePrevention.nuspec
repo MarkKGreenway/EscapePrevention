@@ -14,6 +14,11 @@
     <releaseNotes></releaseNotes>
     <copyright></copyright>
     <tags>URL xml escaped escapeprevention</tags>
+	      <dependencies>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="RestSharp" version="105.0.1" />
+            </group>
+        </dependencies>
   </metadata>
   <files>
 	<file src="EscapePrevention\bin\$configuration$\EscapePrevention.dll" target="lib\net40\" />

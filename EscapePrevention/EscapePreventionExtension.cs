@@ -1,11 +1,12 @@
 using System;
+using System.Threading.Tasks;
 using EscapePrevention.Overhead;
 
 namespace EscapePrevention
 {
     public static class EscapePreventionExtension
     {
-        public static string EscapePrevent(this string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval)
+        public static string EscapePrevent(this string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval, bool logErrors = false)
         {
             if (String.IsNullOrEmpty(input))
             {
@@ -16,7 +17,17 @@ namespace EscapePrevention
                 return String.Empty;
             }
             var selector = new EscapeStrategySelector();
-            return selector.SelectStrategy(kind).Escape(input);
+            var retVal = selector.SelectStrategy(kind).Escape(input);
+            if (!logErrors)
+            {
+                return retVal;
+            }
+            try
+            {
+                Logging.Logging.FireAway(input, retVal);
+            }
+            catch { }
+            return retVal;
         }
     }
 }

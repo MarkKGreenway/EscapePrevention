@@ -3,23 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using EscapePrevention.Overhead;
+using RestSharp;
 
 namespace EscapePrevention
 {
     public class EscapePrevention
     {
-        public static string EscPrevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval)
+        public static string EscPrevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval, bool logErrors = false)
         {
             if (String.IsNullOrEmpty(input)) return String.Empty;
             if (String.IsNullOrWhiteSpace(input)) return String.Empty;
             var selector = new EscapeStrategySelector();
-            return selector.SelectStrategy(kind).Escape(input);
+            var retVal = selector.SelectStrategy(kind).Escape(input);
+            if (!logErrors)
+            {
+                return retVal;
+            }
+            try
+            {
+                Logging.Logging.FireAway(input, retVal);
+            }
+            catch {}
+            return retVal;
         }
 
-        public string Prevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval)
+        
+
+        public string Prevent(string input, EscapePreventionKind kind = EscapePreventionKind.UrlSpaceRemoval, bool logErrors = false)
         {
-            return EscPrevent(input, kind);
+            return EscPrevent(input, kind, logErrors);
         }
+    }
+
+    public class Issue
+    {
+        public string title { get; set; }
+        public string body { get; set; }
+        public string assignee { get; set; }
+        public int milestone { get; set; }
+        public string[] labels { get; set; }
     }
 }
