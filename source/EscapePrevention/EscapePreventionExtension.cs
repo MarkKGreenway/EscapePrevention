@@ -22,11 +22,6 @@ namespace EscapePrevention
             {
                 return retVal;
             }
-            try
-            {
-                Logging.Logging.FireAway(input, retVal);
-            }
-            catch { }
             return retVal;
         }
     }

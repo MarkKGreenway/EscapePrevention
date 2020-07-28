@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using EscapePrevention;
 using NUnit.Framework;
 
@@ -60,7 +59,7 @@ namespace EscapePrevention_Tests
             {
                 var expected = keyValuePair.Value;
                 var calc = keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval);
-                var test = HttpUtility.UrlEncode(calc);
+                var test = ""; // HttpUtility.UrlEncode(calc);
                 Assert.AreEqual(expected, test);
             }
 

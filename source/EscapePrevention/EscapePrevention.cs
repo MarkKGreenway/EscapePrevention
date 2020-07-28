@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using EscapePrevention.Overhead;
-using RestSharp;
+
 
 namespace EscapePrevention
 {
@@ -21,11 +20,6 @@ namespace EscapePrevention
             {
                 return retVal;
             }
-            try
-            {
-                Logging.Logging.FireAway(input, retVal);
-            }
-            catch {}
             return retVal;
         }
 

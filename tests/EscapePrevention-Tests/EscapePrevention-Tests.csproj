@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0C92DB9-CC35-4858-BBD1-95DCF2BFCBA0}</ProjectGuid>
+    <ProjectGuid>{9C0DA08C-1970-4E92-B877-D6C5626B0DCC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EscapePrevention</RootNamespace>
-    <AssemblyName>EscapePrevention</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>EscapePrevention_Tests</RootNamespace>
+    <AssemblyName>EscapePrevention-Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,19 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EscapeKinds\UrlEscapeStrategy.cs" />
-    <Compile Include="EscapeKinds\UrlSpaceRemovalStrategy.cs" />
-    <Compile Include="EscapeKinds\UrlSpaceReplacementStrategy.cs" />
-    <Compile Include="EscapePrevention.cs" />
-    <Compile Include="EscapePreventionExtension.cs" />
-    <Compile Include="EscapePreventionKind.cs" />
-    <Compile Include="Logging\Logging.cs" />
-    <Compile Include="Overhead\EscapeStrategy.cs" />
-    <Compile Include="Overhead\EscapeStrategySelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Smoke.cs" />
+    <Compile Include="UrlSpaceRemoval.cs" />
+    <Compile Include="UrlSpaceReplacementTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\source\EscapePrevention\EscapePrevention.csproj">
+      <Project>{a0c92db9-cc35-4858-bbd1-95dcf2bfcba0}</Project>
+      <Name>EscapePrevention</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

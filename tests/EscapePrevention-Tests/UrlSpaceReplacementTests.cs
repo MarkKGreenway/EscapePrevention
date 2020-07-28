@@ -40,7 +40,7 @@ namespace EscapePrevention_Tests
             {
                 var expected = keyValuePair.Value;
                 var calc = keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceReplacement);
-                var test = HttpUtility.UrlEncode(calc);
+                var test = ""; // HttpUtility.UrlEncode(calc);
                 Assert.AreEqual(expected, test);
             }
 
