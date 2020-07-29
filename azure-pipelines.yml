@@ -55,7 +55,7 @@ steps:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/**/Coverage.netstandard2.0.cobertura.xml'
 
-- task: NuGetCommand@2
-  inputs:
-    command: pack
-    packagesToPack: 'source/**/*.csproj'
+#- task: NuGetCommand@2
+#  inputs:
+#    command: pack
+#    packagesToPack: 'source/**/*.csproj'
