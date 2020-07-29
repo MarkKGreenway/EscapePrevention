@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EscapePrevention;
 using NUnit.Framework;
 
@@ -8,11 +9,12 @@ namespace EscapePrevention_Tests
     [TestFixture]
     public class UrlSpaceRemoval
     {
+        public const EscapePreventionKind remove = EscapePreventionKind.UrlSpaceRemoval;
         [Test]
         public void OnlyASpyaceIsEmpt()
         {
             var sut = " ";
-            var retVal = sut.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval);
+            var retVal = sut.EscapePrevent(remove);
             Assert.AreEqual("", retVal);
         }
 
@@ -20,7 +22,7 @@ namespace EscapePrevention_Tests
         public void SpaceInWords()
         {
             var sut = "key board";
-            var retVal = sut.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval);
+            var retVal = sut.EscapePrevent(remove);
             Assert.AreEqual("keyboard", retVal);
         }
 
@@ -36,7 +38,7 @@ namespace EscapePrevention_Tests
             };
             foreach (var keyValuePair in list)
             {
-                Assert.AreEqual(keyValuePair.Value, keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval));
+                Assert.AreEqual(keyValuePair.Value, keyValuePair.Key.EscapePrevent(remove));
             }
 
         }
@@ -48,9 +50,17 @@ namespace EscapePrevention_Tests
         [TestCase("xr$y zdxj", "xryzdxj")]
         public void Verify(string source, string expected)
         {
-            var calc = source.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval);
+            var calc = source.EscapePrevent(remove);
             var test = System.Net.WebUtility.UrlEncode(calc);
             Assert.AreEqual(expected, test);
+        }
+
+        [Test]
+        public void EmptyString()
+        {
+            var calc = String.Empty.EscapePrevent(remove);
+            var test = System.Net.WebUtility.UrlEncode(calc);
+            Assert.AreEqual(String.Empty, test);
         }
 
         [Test]
@@ -61,7 +71,7 @@ namespace EscapePrevention_Tests
         public void ObjectVerifyRemoval(string source, string expected)
         {
             var prevented = new EscapePrevention.EscapePrevention();
-            var calc = prevented.Prevent(source, EscapePreventionKind.UrlSpaceRemoval);
+            var calc = prevented.Prevent(source, remove);
             var test = System.Net.WebUtility.UrlEncode(calc);
             Assert.AreEqual(expected, test);
         }
