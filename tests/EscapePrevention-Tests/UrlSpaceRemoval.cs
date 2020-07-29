@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using EscapePrevention;
 using NUnit.Framework;
 
@@ -42,27 +38,19 @@ namespace EscapePrevention_Tests
             {
                 Assert.AreEqual(keyValuePair.Value, keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval));
             }
-          
+
         }
 
         [Test]
-        public void Verify()
+        [TestCase("fELBM*#Yc4&gSf", "fELBMYc4gSf")]
+        [TestCase("l46Gagns95@5Ee", "l46Gagns955Ee")]
+        [TestCase("MebT Vo3I", "MebTVo3I")]
+        [TestCase("xr$y zdxj", "xryzdxj")]
+        public void Verify(string source, string expected)
         {
-            var list = new Dictionary<string, string>
-            {
-                {"fELBM*#Yc4&gSf", "fELBMYc4gSf"},
-                {"l46Gagns95@5Ee", "l46Gagns955Ee"},
-                {"MebT Vo3I", "MebTVo3I"},
-                {"xr$y zdxj", "xryzdxj"},
-            };
-            foreach (var keyValuePair in list)
-            {
-                var expected = keyValuePair.Value;
-                var calc = keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval);
-                var test = ""; // HttpUtility.UrlEncode(calc);
-                Assert.AreEqual(expected, test);
-            }
-
+            var calc = source.EscapePrevent(EscapePreventionKind.UrlSpaceRemoval);
+            var test = System.Net.WebUtility.UrlEncode(calc);
+            Assert.AreEqual(expected, test);
         }
     }
 }

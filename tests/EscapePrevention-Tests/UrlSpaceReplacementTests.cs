@@ -10,40 +10,28 @@ namespace EscapePrevention_Tests
     public class UrlSpaceReplacementTests
     {
         [Test]
-        public void Bulk()
+        [TestCase("fELBM*#Yc4&gSf", "fELBMYc4gSf")]
+        [TestCase("l46Gagns95@5Ee", "l46Gagns955Ee")]
+        [TestCase("MebT Vo3I", "MebT_Vo3I")]
+        [TestCase("xr$y zdxj", "xry_zdxj")]
+        public void Bulk(string source, string expected)
         {
-            var list = new Dictionary<string, string>
-            {
-                {"fELBM*#Yc4&gSf", "fELBMYc4gSf"},
-                {"l46Gagns95@5Ee", "l46Gagns955Ee"},
-                {"MebT Vo3I", "MebT_Vo3I"},
-                {"xr$y zdxj", "xry_zdxj"},
-            };
-            foreach (var keyValuePair in list)
-            {
-                Assert.AreEqual(keyValuePair.Value, keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceReplacement));
-            }
+
+                Assert.AreEqual(expected, source.EscapePrevent(EscapePreventionKind.UrlSpaceReplacement));
+            
 
         }
 
         [Test]
-        public void Verify()
+        [TestCase("fELBM*#Yc4&gSf", "fELBMYc4gSf")]
+        [TestCase("l46Gagns95@5Ee", "l46Gagns955Ee")]
+        [TestCase("MebT Vo3I", "MebT_Vo3I")]
+        [TestCase("xr$y zdxj", "xry_zdxj")]
+        public void Verify(string source, string expected)
         {
-            var list = new Dictionary<string, string>
-            {
-                {"fELBM*#Yc4&gSf", "fELBMYc4gSf"},
-                {"l46Gagns95@5Ee", "l46Gagns955Ee"},
-                {"MebT Vo3I", "MebT_Vo3I"},
-                {"xr$y zdxj", "xry_zdxj"},
-            };
-            foreach (var keyValuePair in list)
-            {
-                var expected = keyValuePair.Value;
-                var calc = keyValuePair.Key.EscapePrevent(EscapePreventionKind.UrlSpaceReplacement);
-                var test = ""; // HttpUtility.UrlEncode(calc);
-                Assert.AreEqual(expected, test);
-            }
-
+            var calc = source.EscapePrevent(EscapePreventionKind.UrlSpaceReplacement);
+            var test = System.Net.WebUtility.UrlEncode(calc);
+            Assert.AreEqual(expected, test);
         }
 
     }
