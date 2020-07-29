@@ -50,7 +50,7 @@ namespace EscapePrevention_Tests
             var staticOutput = EscapePrevention.EscapePrevention.EscPrevent(testString, kind: escapePreventionKind);
 
 
-            // Not Static
+            // Not Static 
             var preventer = new EscapePrevention.EscapePrevention();
             var notStaticOutput = preventer.Prevent(testString);
 
