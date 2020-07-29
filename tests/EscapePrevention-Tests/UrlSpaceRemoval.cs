@@ -52,5 +52,18 @@ namespace EscapePrevention_Tests
             var test = System.Net.WebUtility.UrlEncode(calc);
             Assert.AreEqual(expected, test);
         }
+
+        [Test]
+        [TestCase("fELBM*#Yc4&gSf", "fELBMYc4gSf")]
+        [TestCase("l46Gagns95@5Ee", "l46Gagns955Ee")]
+        [TestCase("MebT Vo3I", "MebTVo3I")]
+        [TestCase("xr$y zdxj", "xryzdxj")]
+        public void ObjectVerifyRemoval(string source, string expected)
+        {
+            var prevented = new EscapePrevention.EscapePrevention();
+            var calc = prevented.Prevent(source, EscapePreventionKind.UrlSpaceRemoval);
+            var test = System.Net.WebUtility.UrlEncode(calc);
+            Assert.AreEqual(expected, test);
+        }
     }
 }

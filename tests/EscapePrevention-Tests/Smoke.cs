@@ -23,7 +23,7 @@ namespace EscapePrevention_Tests
         [TestCase(EscapePreventionKind.XML)]
         public void EmptyReturnsEmpty(EscapePreventionKind escapePreventionKind)
         {
-            var testString = "";
+            var testString = String.Empty;
             var expected = String.Empty;
             //Static
             var staticOutput = EscapePrevention.EscapePrevention.EscPrevent(testString, kind: escapePreventionKind);

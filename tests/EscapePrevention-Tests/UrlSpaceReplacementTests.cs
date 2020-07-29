@@ -34,5 +34,17 @@ namespace EscapePrevention_Tests
             Assert.AreEqual(expected, test);
         }
 
+        [Test]
+        [TestCase("fELBM*#Yc4&gSf", "fELBMYc4gSf")]
+        [TestCase("l46Gagns95@5Ee", "l46Gagns955Ee")]
+        [TestCase("MebT Vo3I", "MebT_Vo3I")]
+        [TestCase("xr$y zdxj", "xry_zdxj")]
+        public void ObjectPrevent(string source, string expected)
+        {
+            var prevented = new EscapePrevention.EscapePrevention();
+            var calc = prevented.Prevent(source, EscapePreventionKind.UrlSpaceReplacement);
+            var test = System.Net.WebUtility.UrlEncode(calc);
+            Assert.AreEqual(expected, test);
+        }
     }
 }
