@@ -16,10 +16,6 @@ namespace EscapePrevention
             if (String.IsNullOrWhiteSpace(input)) return String.Empty;
             var selector = new EscapeStrategySelector();
             var retVal = selector.SelectStrategy(kind).Escape(input);
-            if (!logErrors)
-            {
-                return retVal;
-            }
             return retVal;
         }
 
