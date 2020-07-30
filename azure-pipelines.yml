@@ -53,3 +53,9 @@ steps:
   inputs:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.${mkgPlatform}.cobertura.xml'
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish Report'
+  inputs:
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/Coverage.${mkgPlatform}.cobertura.xml'
