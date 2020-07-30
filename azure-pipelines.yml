@@ -20,18 +20,22 @@ steps:
 
 
 - task: UseDotNet@2
-  displayName: 'Install .NET Core SDK'
-  inputs:
-    version: 5.0.x
-    performMultiLevelLookup: true
-    includePreviewVersions: true # Required for preview versions
+  displayName: 'Use .NET Core SDK 3.1.201'  inputs:
+    version: 3.1.201
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore'
   inputs:
     command: 'restore'
     feedsToUse: 'select'
-  
+
+- task: DotNetCoreCLI@2
+  displayName: 'Install .NET Core tools from local manifest'
+  inputs:
+    command: custom
+    custom: tool
+    arguments: 'restore'
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -47,6 +51,8 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
     projects: '**/*-Tests.csproj'
+
+
 
 - task: DotNetCoreCLI@2
   displayName: 'Create code coverage report'
