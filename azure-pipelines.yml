@@ -61,7 +61,7 @@ steps:
   inputs:
     command: custom
     custom: tool
-    arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/**/Coverage.${mkgPlatform}.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
+    arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/TestResults/Coverage/coverage.netcoreapp3.1.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
 
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
