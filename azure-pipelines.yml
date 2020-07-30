@@ -6,8 +6,19 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  GitVersion.SemVer: ''
+  mkgPlatform: 'netcoreapp3.1'
+
 
 steps:
+- task: UseGitVersion@5
+  displayName: gitversion
+  inputs:
+    versionSpec: '5.x'
+    updateAssemblyInfo: true
+    updateAssemblyInfoFilename: '$(Build.SourcesDirectory)/source/EscapePrevention/Properties/AssemblyInfo.cs'
+
+
 - task: UseDotNet@2
   displayName: 'Install .NET Core SDK'
   inputs:

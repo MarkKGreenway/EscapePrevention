@@ -1,0 +1,14 @@
+mode: ContinuousDeployment
+branches: 
+ feature:
+  regex: features?[/-]
+  tag: FeatureTest
+ develop:
+  regex: dev(elop)?(ment)?$
+  tag: DevTest
+ master:
+  regex: main$
+  tag: MasterTest
+ignore:
+  sha: []
+merge-message-formats: {}
