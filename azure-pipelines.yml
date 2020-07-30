@@ -20,10 +20,11 @@ steps:
 
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core SDK 3.1.201'  
+  displayName: 'Install .NET Core SDK'
   inputs:
-    version: 3.1.201
-    installationPath: $(Agent.ToolsDirectory)/dotnet
+    version: 5.0.x
+    performMultiLevelLookup: true
+    includePreviewVersions: true # Required for preview versions
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore'
@@ -66,4 +67,4 @@ steps:
   displayName: 'Publish code coverage report'
   inputs:
     codeCoverageTool: 'cobertura'
-    summaryFileLocation: '$(Build.SourcesDirectory)/**/Coverage.${mkgPlatform}.cobertura.xml'
+    summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/Coverage/coverage.netcoreapp3.1.cobertura.xml'
