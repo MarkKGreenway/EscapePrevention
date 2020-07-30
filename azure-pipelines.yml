@@ -39,3 +39,10 @@ steps:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
+
+ - task: DotNetCoreCLI@2
+   displayName: 'Testing'
+  inputs:
+    command: test
+    projects: '**/tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
