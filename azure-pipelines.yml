@@ -1,5 +1,4 @@
 trigger:
-- master
 - main 
 pool:
    vmImage: 'windows-latest'
@@ -68,3 +67,12 @@ steps:
   inputs:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/Coverage/coverage.netcoreapp3.1.cobertura.xml'
+
+
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    PackageVersion: '$(GitVersion.SemVer)'
+    packDestination: '$(Build.ArtifactStagingDirectory)'
