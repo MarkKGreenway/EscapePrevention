@@ -40,9 +40,16 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
 
- - task: DotNetCoreCLI@2
-   displayName: 'Testing'
+- task: DotNetCoreCLI@2
+  displayName: 'Testing'
   inputs:
-    command: test
-    projects: '**/tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    command: 'test'
+    arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
+    publishTestResults: true
+    projects: '**/test/*.csproj' # update with your test project directory
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Code Coverage'
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.${mkgPlatform}.cobertura.xml'
