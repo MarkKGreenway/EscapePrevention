@@ -41,21 +41,22 @@ steps:
     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
 
 - task: DotNetCoreCLI@2
-  displayName: 'Testing'
+  displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
     command: 'test'
-    arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
+    arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
     projects: '**/*-Tests.csproj'
 
-- task: PublishCodeCoverageResults@1
-  displayName: 'Code Coverage'
+- task: DotNetCoreCLI@2
+  displayName: 'Create code coverage report'
   inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.${mkgPlatform}.cobertura.xml'
+    command: custom
+    custom: tool
+    arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/**/Coverage.${mkgPlatform}.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
 
 - task: PublishCodeCoverageResults@1
-  displayName: 'Publish Report'
+  displayName: 'Publish code coverage report'
   inputs:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/**/Coverage.${mkgPlatform}.cobertura.xml'
