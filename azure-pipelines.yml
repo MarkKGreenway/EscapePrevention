@@ -65,3 +65,22 @@ steps:
   inputs:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/Coverage/coverage.netcoreapp3.1.cobertura.xml'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack the package'
+  inputs:
+    command: 'pack'
+    configuration: $(configuration)
+    packagesToPack: $(projectPath)
+    nobuild: true
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '1'
+    patchVersion: '0'
+​
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish the package'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
