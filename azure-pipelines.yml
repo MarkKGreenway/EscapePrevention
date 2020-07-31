@@ -74,7 +74,7 @@ steps:
     command: pack
     packagesToPack: '$(Build.SourcesDirectory)/source/EscapePrevention/EscapePrevention.csproj' 
     versioningScheme: byEnvVar 
-    versionEnvVar: GitVersion.NuGetVersion
+    versionEnvVar: GitVersion.SemVer
     
    
 - task: PublishBuildArtifacts@1
