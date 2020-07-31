@@ -1,23 +1,23 @@
-<?xml version="1.0"?>
-<package >
-  <metadata>
-    <id>EscapePrevention</id>
-    <version>$version$</version>
-    <title>Escape Prevention</title>
-    <authors>Mark Greenway</authors>
-    <owners>Mark Greenway</owners>
-    <licenseUrl>https://github.com/MarkKGreenway/EscapePrevention/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/MarkKGreenway/EscapePrevention/</projectUrl>
-    <iconUrl>http://i.imgur.com/2VWymEV.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>This library is to strip out any characters that would have to be escaped later:</description>
-    <releaseNotes></releaseNotes>
-    <copyright></copyright>
-    <tags>URL xml escaped escapeprevention</tags>
-	    <dependencies>
-        </dependencies>
-  </metadata>
-  <files>
-	<file src="EscapePrevention\bin\$configuration$\EscapePrevention.dll" target="lib\net40\" />
-  </files>
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>EscapePrevention</id>
+		<version>0.2.1</version>
+        <description>This library is to strip out any characters that would have to be escaped later:</description>
+        <authors>Mark Greenway</authors>
+		
+
+        <!-- Optional elements -->
+        <title>Escape Prevention</title>
+		<licenseUrl>https://github.com/MarkKGreenway/EscapePrevention/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/MarkKGreenway/EscapePrevention/</projectUrl>
+		<iconUrl>http://i.imgur.com/2VWymEV.png</iconUrl>
+		<owners>Mark Greenway</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>		
+		<releaseNotes></releaseNotes>
+		<copyright></copyright>
+		<tags>URL xml escaped escapeprevention</tags>
+		</metadata>
+    <!-- Optional 'files' node -->
 </package>

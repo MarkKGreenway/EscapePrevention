@@ -8,7 +8,7 @@ branches:
   tag: DevTest
  master:
   regex: main$
-  tag: MasterTest
+  tag: Release
 ignore:
   sha: []
 merge-message-formats: {}
