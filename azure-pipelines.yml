@@ -76,7 +76,7 @@ steps:
     versioningScheme: byEnvVar 
     versionEnvVar: GitVersion.NuGetVersion
     
-    
+   
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
