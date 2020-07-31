@@ -72,7 +72,7 @@ steps:
   displayName: 'dotnet pack' 
   inputs: 
     command: pack
-    packagesToPack: '/source/**/*.csproj' 
+    packagesToPack: '/source/EscapePrevention/EscapePrevention.csproj' 
     versioningScheme: byEnvVar 
     versionEnvVar: GitVersion.NuGetVersion
     
