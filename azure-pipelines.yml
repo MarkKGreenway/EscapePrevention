@@ -73,6 +73,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
-    PackageVersion: '$(GitVersion.SemVer)'
-    packDestination: '$(Build.ArtifactStagingDirectory)'
+    packagesToPack: '/source/**/*.csproj'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'GitVersion.SemVer'
+
