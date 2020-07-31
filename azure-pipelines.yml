@@ -72,7 +72,7 @@ steps:
   displayName: 'dotnet pack' 
   inputs: 
     command: pack
-    packagesToPack: '$(Parameters.projects)' 
+    packagesToPack: '/source/**/*.csproj' 
     nobuild: true 
     versioningScheme: byEnvVar 
     versionEnvVar: GitVersion.NuGetVersion
