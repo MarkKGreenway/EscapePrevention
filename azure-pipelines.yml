@@ -73,7 +73,6 @@ steps:
   inputs: 
     command: pack
     packagesToPack: '/source/**/*.csproj' 
-    nobuild: true 
     versioningScheme: byEnvVar 
     versionEnvVar: GitVersion.NuGetVersion
     
