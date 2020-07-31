@@ -68,12 +68,18 @@ steps:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/Coverage/coverage.netcoreapp3.1.cobertura.xml'
 
-
-
+​
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
     packagesToPack: '/source/**/*.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'GitVersion.SemVer'
+    
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish the package'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
